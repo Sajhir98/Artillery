@@ -7,6 +7,11 @@ public class AdministradorJuego : MonoBehaviour
     [SerializeField] private int velocidadBala = 30;
     [SerializeField] private int disparosPorJuego = 10;
     [SerializeField] private float velocidadRotacion = 1;
+    [SerializeField] private int disparosIniciales = 10;
+    [SerializeField] private int disparosPorJuegos = 10;
+
+    public GameObject CanvasGanar;
+    public GameObject CanvasPerder;
 
     public int VelocidadBala
     {
@@ -40,9 +45,28 @@ public class AdministradorJuego : MonoBehaviour
         }
     }
 
-    
-    void Update()
+
+    private void Update()
     {
-        
+        if (DisparosPorJuego <= 0)
+        {
+            PerderJuego();
+        }
     }
+
+    public void GanarJuego()
+    {
+        CanvasGanar.SetActive(true);
+    }
+
+    public void PerderJuego()
+    {
+        CanvasPerder.SetActive(true);
+    }
+
+    public void ReiniciarDisparos()
+    {
+        disparosPorJuego = disparosIniciales;
+    }
+
 }
